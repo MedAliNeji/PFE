@@ -1,0 +1,57 @@
+<div class="body" *ngIf="entreprise">
+    <div class="profile">
+      <img  [src]="entreprise.logo" alt="Logo de la société">
+      <h1>{{entreprise.nom}}</h1>
+      <p>{{entreprise.email}}</p>
+      <p>Adresse : {{entreprise.adresse}}</p>
+      <p>Téléphone : {{entreprise.contact}}</p>
+      <p>Les secteurs d'activités : {{entreprise.secteuractivite}}</p>
+      
+      <button class="btn btn-primary" (click)="openPopup()">Ajouter une Propostion de Stage</button>
+    </div>
+  </div>
+
+<!-- POP up   -->
+
+
+<ng-template #pop let-modal>
+          
+  <div class="modal-content">
+    <div class="modal-header p-5 pb-4 border-bottom-0">
+      <h1 class="fw-bold mb-0 fs-2">Ajouter une nouvelle proposition :</h1>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+  
+    <div class="modal-body p-5 pt-0">
+
+      <form #ff="ngForm" [formGroup]="popform" (ngSubmit)="onAjout()">
+        <label for="sujet">Sujet:</label><br>
+        <input type="text" id="sujet" name="sujet" class="form-control" formControlName="titre"><br>
+
+        <label for="Description">Description:</label><br>
+         <textarea name="Description" id="Description" class="form-control" cols="30" rows="5" formControlName="description"></textarea><br>
+
+         <div class="row">
+          <input type="date" id="exampleInput" name="input" (change)="popform.controls['date_fin'].setValue('')" formControlName="date_debut" class="form-control col mx-1"
+          placeholder="yyyy-MM-dd" min="2023-01-01"  /> 
+          <!-- <input type="date" id="exampleInput" name="input" formControlName="date_debut" class="form-group form-control"
+          placeholder="yyyy-MM-dd" min="2023-01-01" max="2013-12-31" required />  -->
+          Jusqu'a
+         <input type="date" formControlName="date_fin" [readOnly]="popform.controls['date_debut'].invalid" class="form-control col mx-1" 
+         placeholder="yyyy-MM-dd" [min]="popform.value.date_debut"  />
+        </div>
+
+        <label for="cin">Nombre d'etudiants:</label><br>
+        <input type="number" id="nbr" name="nbr" class="form-control" formControlName="nombre"><br>
+
+        <input type="submit" class="btn btn-success m-3" value="Enregistrer" [disabled]="popform.invalid">
+        <input type="button" class="btn btn-secondary" value="Annuler" (click)="modal.close()">
+
+    </form>
+
+    </div>
+  </div> 
+</ng-template>
+
+
+  

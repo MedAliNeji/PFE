@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    padding: 0;
+    margin: 0;
+    
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+
+}
+
+.active-link {
+  font-weight: bold;
+}
+
+/* inputs */
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+  }
+  input.ng-valid.ng-touched{
+    border: 1px solid green;
+  }
+
+  .error{
+    color: red;
+    font-size: smaller;
+  }
+  
+  .error-box{
+    display: block;
+    color: red;
+    font-size: smaller;
+    border: 1px red solid;
+    padding: 5px ;
+    background-color: rgba(255, 115, 0, 0.3);
+  }
+
+  .remarque {
+    color: black;
+    font-size: smaller;
+  }
+
+  /* pop up modal */
+
+.pop-up-backdrop {
+  background-color: rgb(0, 0, 0);  
+}
+
+  /* tables */
+  /* des tables */
+
+.table-responsives , .table-responsives-md ,.table-responsives-sm{
+    overflow-y: hidden;
+  }
+  
+  *, ::after, ::before {
+    box-sizing: border-box;
+  }
+  
+  .table-responsives::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+
+  /* forms */
+  .form-control  {
+    max-width: 500px;
+  }
