@@ -7,16 +7,17 @@ export const encadreurGuard: CanActivateFn = (route, state) => {
   const router = inject(Router)
   const loginService = inject(LoginService);
 
-  return loginService.role().pipe( map((val)=>{
-    if(val == "encadreur") return true;
-    else{
+  return loginService.role().pipe(map((val) => {
+    if (val == "encadreur") return true;
+    else {
       router.navigate(['/accueil'])
       alert("Vous n'avez pas les droits pour accéder à cette page")
       return false
     }
   }),
-  catchError((error)=>{
-    console.log(error);    
-    router.navigate(['/accueil'])
-    return of(false);    
-  }));};
+    catchError((error) => {
+      console.log(error);
+      router.navigate(['/accueil'])
+      return of(false);
+    }));
+};
