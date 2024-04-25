@@ -13,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ListUsersComponent {
   x: any;
-  //user: any;
+  user: any;
   popform !: FormGroup;
   popform1!: FormGroup;
   private modalService = inject(NgbModal);
@@ -26,9 +26,9 @@ export class ListUsersComponent {
   }
 
   listeUsers!: any[];
-  constructor(private user: UserService, private router: ActivatedRoute, private formbuild: FormBuilder) { }
+  constructor(private us: UserService, private router: ActivatedRoute, private formbuild: FormBuilder) { }
   ngOnInit(): void {
-    this.user.getUsers().subscribe(data => {
+    this.us.getUsers().subscribe(data => {
       this.listeUsers = data;
     })
     this.initForm();
@@ -59,7 +59,7 @@ export class ListUsersComponent {
   }
 
   onModifie(i: any) {
-    this.user.getUser(i.id_ent).subscribe(
+    this.us.getUser(i.id_user).subscribe(
       (res: any) => {
         this.user = res[0];
         this.popform.patchValue({
@@ -91,7 +91,7 @@ export class ListUsersComponent {
     if (this.popform.value.password !== '') {
       formData['password'] = this.popform.value.password;
     }
-    this.user.editUser(formData).subscribe(() => {
+    this.us.editUser(formData).subscribe(() => {
       // this.popform.reset();
       this.modalService.dismissAll();
       console.log("Mise à Jour avec Succés");
@@ -107,7 +107,7 @@ export class ListUsersComponent {
 
     const formData = this.popform1.value;
     if (this.popform1.valid) {
-      this.user.addUser(formData).subscribe(() => {
+      this.us.addUser(formData).subscribe(() => {
         this.modalService.dismissAll();
         console.log("Ajouté avec Succés");
         this.ngOnInit();
@@ -120,4 +120,19 @@ export class ListUsersComponent {
     console.log(formData);
   }
 
+  //Delete
+  onDelete(id: string) {
+    this.us.DeleteUser(id).subscribe(
+      response => {
+        // Handle successful response
+        console.log('User deleted successfully:', response);
+      },
+      error => {
+        // Handle error response
+        console.error('Error deleting user:', error);
+      }
+
+    );
+
+  }
 }

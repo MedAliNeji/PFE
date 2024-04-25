@@ -29,7 +29,7 @@ export class UserService {
 
 
   getUser(id: string): Observable<any[]> {
-    return this.http.post<any[]>(`${this.url}/user`, { id_ent: +id }, this.options).pipe(
+    return this.http.post<any[]>(`${this.url}/user`, { id_user: +id }, this.options).pipe(
       catchError(err => {
         console.log(err)
         alert("Erreur lors de la recuperation des utilisateurs");
@@ -46,7 +46,7 @@ export class UserService {
   }
 
   DeleteUser(id: string) {
-    return this.http.post<any>(`${this.url}/deleteUser`, { id_ent: +id }, this.options).pipe(
+    return this.http.post<any>(`${this.url}/deleteUser`, { id_user: +id }, this.options).pipe(
       catchError(err => {
         console.log(err)
         alert("Erreur lors de la suppression de l'utilisateur");
