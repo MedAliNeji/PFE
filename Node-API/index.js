@@ -22,9 +22,7 @@ const port = 3000
 const auth = require('./src/auth/login')
 const sign = require('./src/auth/signup')
 const controle = require('./src/auth/controler')
-const etudiant = require('./src/Data/etudiant')
-const entreprise = require('./src/Data/entreprise')
-const offre = require('./src/Data/offre')
+const user = require('./src/Data/user')
 ////-----------------------------------------------
 
 
@@ -33,22 +31,17 @@ app.post('/login', auth.login)
 app.post('/register', sign.signup)
 app.post('/controle', controle.verifyToken)
 
-app.get('/etudiants', etudiant.getEtudiants)
-app.get('/entreprises', entreprise.getEntreprises)
-app.get('/offres', offre.getOffres)
+app.get('/users', user.getUsers)
 
 app.post('/signup', sign.signup)
 
-app.post('/etudiant', etudiant.getEtudiant)
-app.post('/entreprise', entreprise.getEntreprise)
+app.post('/user', user.getUser)
 
-// MOD Entreprise
-app.post('/addEntreprise', entreprise.addEntreprise)
-app.post('/editEntreprise', entreprise.updateEntreprise);
-app.delete('/entreprise', entreprise.deleteEntreprise);
+// MOD User
+app.post('/addUser', user.addUser)
+app.post('/editUser', user.updateUser);
+app.delete('/user', user.deleteUser);
 
-// Entreprise Ajout Offre
-app.post('/addOffre', offre.addOffre)
 /*
 // hash code
 const bcrypt = require('bcrypt');
@@ -97,8 +90,8 @@ app.post('/test', function (req, res) {
   })
 
 
-  app.get('/entreprise', function (req, res) {
-    connection.query('SELECT * FROM entreprise', (err, rows) => {
+  app.get('/user', function (req, res) {
+    connection.query('SELECT * FROM user', (err, rows) => {
         if (err) throw err
         console.log('Data received from Db:')
         console.log(rows)
