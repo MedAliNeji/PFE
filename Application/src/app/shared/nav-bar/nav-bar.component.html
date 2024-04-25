@@ -1,80 +1,76 @@
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/logott.png" alt="Our TTC">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li><a class="nav-link" routerLink="/layout">Home</a></li>
-                        <li><a class="nav-link" [routerLink]="['/home']" fragment="services">Services</a></li>
-                        <li><a class="nav-link" [routerLink]="['/home']" fragment="about">About US</a></li>
-                        <li><a class="nav-link" [routerLink]="['/home']" fragment="contact-section">Contact Us</a></li>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <!-- ***** Logo Start ***** -->
+          <a href="index.html" class="logo">
+            <img src="assets/images/logott.png" alt="Our TTC">
+          </a>
+          <!-- ***** Logo End ***** -->
+          <!-- ***** Menu Start ***** -->
+          <ul class="nav">
+            <li><a class="nav-link" routerLink="/layout">Home</a></li>
+            <li><a class="nav-link" [routerLink]="['/home']" fragment="services">Services</a></li>
+            <li><a class="nav-link" [routerLink]="['/home']" fragment="about">About US</a></li>
+            <li><a class="nav-link" [routerLink]="['/home']" fragment="contact-section">Contact Us</a></li>
 
 
-                        <!-- <li class="scroll-to-section"><a href="#services">Services</a></li>
+            <!-- <li class="scroll-to-section"><a href="#services">Services</a></li>
                         <li class="scroll-to-section"><a href="#about">About US</a></li>
                         <li class="scroll-to-section"><a href="#contact-section">Contact Us</a></li>
                         <a routerLink="/register"><button id="signup-btn" >Sign Up</button></a>
                         <a routerLink="/login" ><button id="signin-btn">Sign In</button> </a> -->
 
-                        <!-- admin -->
-                        <ng-container *ngIf="user && user.role =='admin' ">
-                            <li><a class="nav-link" routerLink="/admin/liste-societes" routerLinkActive="actif" >Les Societes</a></li>
-                        </ng-container>
+            <!-- admin -->
+            <ng-container *ngIf="user && user.role =='admin' ">
+              <li><a class="nav-link" routerLink="/admin/liste-societes" routerLinkActive="actif">Les Utilisateurs</a>
+              </li>
+            </ng-container>
 
-                        <!-- etudiant -->
-                        <ng-container *ngIf="user && user.role =='etudiant' ">
-                            <li><a class="nav-link" routerLink="/etudiant/liste_offres" routerLinkActive="actif" >Les Offres Disponibles</a></li>
+            <!-- user -->
+            <ng-container *ngIf="user && user.role =='user' ">
+              <li><a class="nav-link" routerLink="/etudiant/liste_offres" routerLinkActive="actif">Les logs
+                  Disponibles</a></li>
 
-                        </ng-container>
+            </ng-container>
 
-                        <!-- entreprise -->
-                        <ng-container *ngIf="user && user.role =='entreprise' ">
+            <!-- entreprise -->
+            <ng-container *ngIf="user && user.role =='entreprise' ">
 
-                        <li>
-                            <a class="nav-link" routerLink="/entreprise/profile" routerLinkActive="actif" >Profil</a>
-                        </li>
+              <li>
+                <a class="nav-link" routerLink="/entreprise/profile" routerLinkActive="actif">Profil</a>
+              </li>
 
-                        <li>
-                            <a class="nav-link" routerLink="/entreprise/liste-offre" routerLinkActive="actif" >Les proposition publiées</a>
-                        </li>
-                        </ng-container>
-
-                        <!-- encadrant -->
-                        <ng-container *ngIf="user && user.role =='encadrant' ">
-
-                        </ng-container>
+              <li>
+                <a class="nav-link" routerLink="/entreprise/liste-offre" routerLinkActive="actif">Les proposition
+                  publiées</a>
+              </li>
+            </ng-container>
 
 
-                        <ng-container *ngIf="!user">
-                        <li>
-                            <!-- <button class="btn btn-success mx-1" id="signin-btn" routerLink="/login" >Connexion</button>
+            <ng-container *ngIf="!user">
+              <li>
+                <!-- <button class="btn btn-success mx-1" id="signin-btn" routerLink="/login" >Connexion</button>
                             <button class="btn btn-secondary mx-1" id="signup-btn" routerLink="/register" >Register</button> -->
-                            <button id="signin-btn" class="mx-1" routerLink="/login" >Connexion</button>
-                            <button id="signup-btn" class="mx-1" routerLink="/register" >Register</button>
-                        </li>
-                        </ng-container>
+                <button id="signin-btn" class="mx-1" routerLink="/login">Connexion</button>
+                <button id="signup-btn" class="mx-1" routerLink="/register">Register</button>
+              </li>
+            </ng-container>
 
-                        <ng-container *ngIf="user">
-                            <li >
-                                <p style="display: inline-block;color: white;">Bonjour {{user.nom}} {{user.prenom ?? ""}}</p>
-                                <button id="signin-btn" class="mx-2" (click)="logout()" >Deconnexion</button>
-                            </li>
-                            </ng-container>
+            <ng-container *ngIf="user">
+              <li>
+                <p style="display: inline-block;color: white;">Bonjour {{user.nom}} {{user.prenom ?? ""}}</p>
+                <button id="signin-btn" class="mx-2" (click)="logout()">Deconnexion</button>
+              </li>
+            </ng-container>
 
 
-                    </ul>
+          </ul>
 
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
+        </nav>
+      </div>
     </div>
+  </div>
 </header>
-<!-- ***** Header Area End ***** -->

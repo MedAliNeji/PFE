@@ -45,7 +45,7 @@ exports.updateUser = async (req, res) => {
 }
 
 exports.deleteUser = async (req, res) => {
-  connection.query('DELETE FROM user WHERE id_ent = ?', [req.body.id], (err, rows) => {
+  connection.query('DELETE FROM user WHERE id_user = ?', [req.body.id], (err, rows) => {
     if (err) throw err;
     console.log('Data received from Db:');
     console.log(rows);
