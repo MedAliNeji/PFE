@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ListeSocietesComponent } from './liste-societes/liste-societes.component';
+import { ListUsersComponent } from './list-users/list-users.component';
 
 
 
 @NgModule({
   declarations: [
-    ListeSocietesComponent,
+    ListUsersComponent
+
   ],
   imports: [
     CommonModule,

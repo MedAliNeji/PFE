@@ -1,9 +1,8 @@
+import { ListUsersComponent } from './list-users/list-users.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListeSocietesComponent } from './liste-societes/liste-societes.component';
-
 const routes: Routes = [
-  {path:'liste-societes' , component : ListeSocietesComponent},
+  { path: 'liste-users', component: ListUsersComponent },
 ];
 
 @NgModule({

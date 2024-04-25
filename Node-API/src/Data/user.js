@@ -11,7 +11,7 @@ exports.getUsers = async (req, res) => {
 }
 
 exports.getUser = async (req, res) => {
-  connection.query('SELECT * FROM user WHERE id_ent = ?', [req.body.id_ent], (err, rows) => {
+  connection.query('SELECT * FROM user WHERE id_user = ?', [req.body.id_ent], (err, rows) => {
     if (err) throw err;
     console.log('Data received from Db:');
     console.log(rows);
@@ -36,7 +36,7 @@ exports.updateUser = async (req, res) => {
   if (data.password) {
     data.password = await bcrypt.hash(data.password, 10);
   }
-  connection.query('UPDATE user SET ? WHERE id_ent = ?', [data, req.body.id_ent], (err, rows) => {
+  connection.query('UPDATE user SET ? WHERE id_user = ?', [data, req.body.id_user], (err, rows) => {
     if (err) throw err;
     console.log('Data received from Db:');
     console.log(rows);

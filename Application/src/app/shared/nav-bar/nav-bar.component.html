@@ -25,7 +25,7 @@
 
             <!-- admin -->
             <ng-container *ngIf="user && user.role =='admin' ">
-              <li><a class="nav-link" routerLink="/admin/liste-societes" routerLinkActive="actif">Les Utilisateurs</a>
+              <li><a class="nav-link" routerLink="/admin/liste-users" routerLinkActive="actif">Les Utilisateurs</a>
               </li>
             </ng-container>
 
@@ -36,7 +36,7 @@
 
             </ng-container>
 
-            <!-- entreprise -->
+            <!-- entreprise
             <ng-container *ngIf="user && user.role =='entreprise' ">
 
               <li>
@@ -47,7 +47,7 @@
                 <a class="nav-link" routerLink="/entreprise/liste-offre" routerLinkActive="actif">Les proposition
                   publiées</a>
               </li>
-            </ng-container>
+            </ng-container> -->
 
 
             <ng-container *ngIf="!user">
