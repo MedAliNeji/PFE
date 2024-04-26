@@ -49,7 +49,7 @@ export class SignUpComponent implements OnInit {
 
           }
           else{
-            alert("Erreur lors de l'inscription");
+            alert("Error while inscription");
           }
         },
         (error) => {

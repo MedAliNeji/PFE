@@ -84,34 +84,34 @@ export class LoginService {
   //     (error) => {
   //       console.error('Error:', error);
   //     }
-  //   ); 
-    
+  //   );
+
   // }
 
   deconnexion(){
     sessionStorage.clear();
-    window.location.replace(window.location.href+"/Deconnecter");    
+    window.location.replace(window.location.href+"/Deconnecter");
   }
 
   login(email: string, password: string): Observable<boolean > {
     console.log("login service");
-    
+
     return this.http.post<any>(`${this.url}/login`, { email, password })
       .pipe(
         map( (response) => {
-          
-          
+
+
           // Store login information for successful login
           sessionStorage.setItem("accessToken", response.accessToken);
           sessionStorage.setItem("user", JSON.stringify(response.user));
-  
-          // alert("Connexion Reussi \n Bienvenue "+response.user.nom+" "+response.user.prenom);
+
+          // alert("connected \n hello "+response.user.nom+" "+response.user.prenom);
           return true; // Login successful
         }),
         tap(result => {
           // console.log(result); // Log the login result (true or false)
           // console.log(JSON.parse(sessionStorage.getItem("user")!).role);
-          
+
         }),
         catchError(error => {
           // console.error(error);
@@ -124,7 +124,7 @@ export class LoginService {
 
   register(data: any): Observable<boolean> {
     console.log(data);
-    
+
     return this.http.post<{ accessToken: string, user: any }>(`${this.url}/register`, data , this.options).pipe(
       map(
         (response) =>{
@@ -137,7 +137,7 @@ export class LoginService {
         console.error('Error Connexion:', error);
         throw of(false);
       })
-  
+
     )
   }
 

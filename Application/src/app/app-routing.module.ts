@@ -23,7 +23,6 @@ const routes: Routes = [
 
   { path: 'home', component: LayoutComponent },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [adminGuard] },
-  { path: 'etudiant', loadChildren: () => import('./etudiant/etudiant.module').then(m => m.EtudiantModule), canActivate: [etudiantGuard] },
 
 
   { path: 'register', component: SignUpComponent },

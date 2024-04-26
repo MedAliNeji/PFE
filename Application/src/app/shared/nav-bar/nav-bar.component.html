@@ -7,7 +7,9 @@
           <!-- ***** Logo Start ***** -->
           <a href="index.html" class="logo">
             <img src="assets/images/logott.png" alt="Our TTC">
+
           </a>
+
           <!-- ***** Logo End ***** -->
           <!-- ***** Menu Start ***** -->
           <ul class="nav">
@@ -25,13 +27,13 @@
 
             <!-- admin -->
             <ng-container *ngIf="user && user.role =='admin' ">
-              <li><a class="nav-link" routerLink="/admin/liste-users" routerLinkActive="actif">Les Utilisateurs</a>
+              <li><a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="actif">Dashboard</a>
               </li>
             </ng-container>
 
             <!-- user -->
             <ng-container *ngIf="user && user.role =='user' ">
-              <li><a class="nav-link" routerLink="/etudiant/liste_offres" routerLinkActive="actif">Les logs
+              <li><a class="nav-link" routerLink="/etudiant/liste_offres" routerLinkActive="actif">Logs
                   Disponibles</a></li>
 
             </ng-container>
@@ -54,15 +56,31 @@
               <li>
                 <!-- <button class="btn btn-success mx-1" id="signin-btn" routerLink="/login" >Connexion</button>
                             <button class="btn btn-secondary mx-1" id="signup-btn" routerLink="/register" >Register</button> -->
-                <button id="signin-btn" class="mx-1" routerLink="/login">Connexion</button>
-                <button id="signup-btn" class="mx-1" routerLink="/register">Register</button>
+                <button type="button" class="btn btn-outline-success" style="margin-right: 10px;"
+                  routerLink="/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                      d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                    <path fill-rule="evenodd"
+                      d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                  </svg> Login</button>
+
+                <button type="button" class="btn btn-outline-warning" routerLink="/register">Sign up</button>
               </li>
             </ng-container>
 
             <ng-container *ngIf="user">
               <li>
-                <p style="display: inline-block;color: white;">Bonjour {{user.nom}} {{user.prenom ?? ""}}</p>
-                <button id="signin-btn" class="mx-2" (click)="logout()">Deconnexion</button>
+                <p style="display: inline-block;color: white;">Hello {{user.nom}} {{user.prenom ?? ""}}</p><br>
+                <button type="button" class="btn btn-danger" (click)="logout()">Logout <svg
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                      d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                    <path fill-rule="evenodd"
+                      d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                  </svg></button>
+
               </li>
             </ng-container>
 
