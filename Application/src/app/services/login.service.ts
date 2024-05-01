@@ -9,64 +9,66 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginService {
 
-  constructor(private http : HttpClient, private router : Router) { }
-  private url: string = environment.apiUrl ;
-  options = {headers : new HttpHeaders({
-    'content-type' : "application/json",
-    'authorization' : "Bearer "+sessionStorage.getItem("accessToken")
-  })}
-  user : any;
-  acessTocken : string='';
-  connected : boolean = false;
+  constructor(private http: HttpClient, private router: Router) { }
+  private url: string = environment.apiUrl;
+  options = {
+    headers: new HttpHeaders({
+      'content-type': "application/json",
+      'authorization': "Bearer " + sessionStorage.getItem("accessToken")
+    })
+  }
+  user: any;
+  acessTocken: string = '';
+  connected: boolean = false;
 
 
-  role():Observable<string>{
+  role(): Observable<string> {
 
-    if(!sessionStorage.getItem("accessToken") || !sessionStorage.getItem('user')) return of("");
+    if (!sessionStorage.getItem("accessToken") || !sessionStorage.getItem('user')) return of("");
     else
-    return this.http.post<any>(`${this.url}/controle`, { accessToken: sessionStorage.getItem("accessToken") }, this.options).pipe(
-      map( (response) => {
-        console.log(response);
-        if(response.connected){
-          this.connected = true;
-          this.user = JSON.parse(sessionStorage.getItem("user")!);
-          return response.role;
-        }
-        else{
-          this.connected = false;
-          return ""
-        }
-      }),
-      catchError(error => {
-        console.error('Error:', error);
-        return of("");
-      })
-    )
+      return this.http.post<any>(`${this.url}/controle`, { accessToken: sessionStorage.getItem("accessToken") }, this.options).pipe(
+        map((response) => {
+          console.log(response);
+          if (response.connected) {
+            this.connected = true;
+            this.user = JSON.parse(sessionStorage.getItem("user")!);
+            return response.role;
+          }
+          else {
+            this.connected = false;
+            return ""
+          }
+        }),
+        catchError(error => {
+          console.error('Error:', error);
+          return of("");
+        })
+      )
 
   }
 
-  controle():Observable<boolean>{
-    if(!sessionStorage.getItem("accessToken") || !sessionStorage.getItem('user')) return of(false);
+  controle(): Observable<boolean> {
+    if (!sessionStorage.getItem("accessToken") || !sessionStorage.getItem('user')) return of(false);
     else
-    return this.http.post<any>(`${this.url}/controle`, { accessToken: sessionStorage.getItem("accessToken") }, this.options).pipe(
-      map( (response) => {
-        console.log(response);
-        if(response.connected){
-          this.connected = true;
-          this.user = JSON.parse(sessionStorage.getItem("user")!);
-          return true;
-        }
-        else{
-          this.connected = false;
-          sessionStorage.clear();
-          return false
-        }
-      }),
-      catchError(error => {
-        console.error('Error:', error);
-        return of(false);
-      })
-    )
+      return this.http.post<any>(`${this.url}/controle`, { accessToken: sessionStorage.getItem("accessToken") }, this.options).pipe(
+        map((response) => {
+          console.log(response);
+          if (response.connected) {
+            this.connected = true;
+            this.user = JSON.parse(sessionStorage.getItem("user")!);
+            return true;
+          }
+          else {
+            this.connected = false;
+            sessionStorage.clear();
+            return false
+          }
+        }),
+        catchError(error => {
+          console.error('Error:', error);
+          return of(false);
+        })
+      )
   }
 
   // controle2()  {
@@ -88,17 +90,17 @@ export class LoginService {
 
   // }
 
-  deconnexion(){
+  deconnexion() {
     sessionStorage.clear();
-    window.location.replace(window.location.href+"/Deconnecter");
+    window.location.replace(window.location.href + "/Deconnecter");
   }
 
-  login(email: string, password: string): Observable<boolean > {
+  login(email: string, password: string): Observable<boolean> {
     console.log("login service");
 
     return this.http.post<any>(`${this.url}/login`, { email, password })
       .pipe(
-        map( (response) => {
+        map((response) => {
 
 
           // Store login information for successful login
@@ -125,10 +127,10 @@ export class LoginService {
   register(data: any): Observable<boolean> {
     console.log(data);
 
-    return this.http.post<{ accessToken: string, user: any }>(`${this.url}/register`, data , this.options).pipe(
+    return this.http.post<{ accessToken: string, user: any }>(`${this.url}/register`, data, this.options).pipe(
       map(
-        (response) =>{
-          alert("Inscription Reussi");
+        (response) => {
+          alert("Registration Done ");
           this.router.navigate(['/login']);
           return true
         }

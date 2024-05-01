@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 // Node JS API initialising
 app.use(express.json())
@@ -30,8 +32,12 @@ const user = require('./src/Data/user')
 app.post('/login', auth.login)
 app.post('/register', sign.signup)
 app.post('/controle', controle.verifyToken)
+app.post('/log', user.getLogs);
+
 
 app.get('/users', user.getUsers)
+//app.get('/departments', user.getDepartments)
+
 
 app.post('/signup', sign.signup)
 
@@ -100,7 +106,6 @@ app.post('/test', function (req, res) {
     )
   })
 */
-
 
 
 //   Launch Server

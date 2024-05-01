@@ -1,3 +1,4 @@
+import { DepartmentService } from './../../services/department.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
@@ -9,23 +10,24 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class SignUpComponent implements OnInit {
   registerForm!: FormGroup;
+  // departments: string[] = [];
 
-  constructor(private fb: FormBuilder , private logS : LoginService){}
+  constructor(private fb: FormBuilder, private logS: LoginService, private departmentService: DepartmentService) { }
 
 
 
-  ngOnInit (): void  {
+  ngOnInit(): void {
     this.registerForm = this.fb.group({
       nom: ['', [Validators.required]],
       prenom: ['', [Validators.required]],
       email: ['', [Validators.required]], //Validators.pattern('[a-zA-Z0-9._%+-]+@isetr.tn$')]],
       contact: ['', [Validators.required, Validators.pattern('^[0-9]{8}$')]],
-      departement: ['', Validators.required],
+      //departement: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(4)]],
       rpassword: ['', [Validators.required, Validators.minLength(4)]]
     });
     this.registerForm.setValidators(this.matchingPasswords);
-
+    // this.fetchDepartments();
   }
   // registerForm = new FormGroup({
   //   firstname: new FormControl(""),
@@ -36,8 +38,17 @@ export class SignUpComponent implements OnInit {
   //   rpwd: new FormControl("")
 
   // });
-
-  registerSubmited(){
+  /* fetchDepartments() {
+     this.departmentService.getDepartments().subscribe(
+       departments => {
+         this.departments = departments;
+       },
+       error => {
+         console.error('Error fetching departments:', error);
+       }
+     );
+   }*/
+  registerSubmited() {
     if (this.registerForm.valid) {
       // // Submit the form if it's valid
       // console.log('Form submitted successfully');
@@ -45,10 +56,10 @@ export class SignUpComponent implements OnInit {
       this.logS.register(this.registerForm.value).subscribe(
         (response) => {
           console.log(response);
-          if(response){
+          if (response) {
 
           }
-          else{
+          else {
             alert("Error while inscription");
           }
         },

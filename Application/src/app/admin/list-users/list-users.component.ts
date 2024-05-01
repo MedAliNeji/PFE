@@ -94,11 +94,11 @@ export class ListUsersComponent {
     this.us.editUser(formData).subscribe(() => {
       // this.popform.reset();
       this.modalService.dismissAll();
-      console.log("Mise à Jour avec Succés");
+      console.log("Update Successfully");
       this.ngOnInit();
     }, error => {
-      console.error('Erreur lors de la mise à jour de l\'utilisateur :', error);
-      alert("Erreur lors de la mise à jour de l'utilisateur");
+      console.error('Error while updating user', error);
+      alert("Error while updating user");
     })
     //  console.log(formData);
 
@@ -109,11 +109,11 @@ export class ListUsersComponent {
     if (this.popform1.valid) {
       this.us.addUser(formData).subscribe(() => {
         this.modalService.dismissAll();
-        console.log("Ajouté avec Succés");
+        console.log("Add Successfully");
         this.ngOnInit();
       }, error => {
-        console.error('Erreur lors de l\'ajout de l\'utilisateur :', error);
-        alert("Erreur lors de l'ajout de l'utilisateur");
+        console.error('Error while adding user :', error);
+        alert("Error while adding user");
       })
     }
     this.modalService.open(this.popRef1, { backdropClass: 'pop-up-backdrop' });

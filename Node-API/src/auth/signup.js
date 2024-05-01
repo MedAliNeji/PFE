@@ -29,7 +29,7 @@ exports.signup = async (req, res) => {
     data.password = await bcrypt.hash(data.password, 10);
     delete data.rpassword;
     console.log(data);
-    //insert new student
+    //insert new user
     connection.query('INSERT INTO user SET ?', data, (err, rows) => {
       if (err) throw err;
       console.log('Data received from Db:');
