@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './shared/login/login.component';
 import { SignUpComponent } from './shared/sign-up/sign-up.component';
 import { adminGuard } from './guards/admin.guard';
-import { etudiantGuard } from './guards/etudiant.guard';
 import { LayoutComponent } from './shared/layout/layout.component';
+import { ChartsComponent } from './shared/charts/charts.component';
 
 const routes: Routes = [
 
@@ -27,6 +27,8 @@ const routes: Routes = [
 
   { path: 'register', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'charts', component: ChartsComponent },
+
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
   // { path: '**', redirectTo: '404' },
 

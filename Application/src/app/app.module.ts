@@ -5,13 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './shared/nav-bar/nav-bar.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './shared/login/login.component';
 import { SignUpComponent } from './shared/sign-up/sign-up.component';
 import { LayoutComponent } from './shared/layout/layout.component';
-
+import { ChartsComponent } from './shared/charts/charts.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +19,8 @@ import { LayoutComponent } from './shared/layout/layout.component';
     FooterComponent,
     LoginComponent,
     SignUpComponent,
-    LayoutComponent
+    ChartsComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +29,6 @@ import { LayoutComponent } from './shared/layout/layout.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -49,7 +49,7 @@ export class UserService {
     return this.http.post<any>(`${this.url}/deleteUser`, { id_user: +id }, this.options).pipe(
       catchError(err => {
         console.log(err)
-        alert("Erreur lors de la suppression de l'utilisateur");
+        alert("Error while deleting user");
         return of([]);
       })
     );

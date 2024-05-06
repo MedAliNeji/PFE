@@ -7,18 +7,18 @@ export const adminGuard: CanActivateFn = (route, state) => {
   const router = inject(Router)
   const loginService = inject(LoginService);
 
-  return loginService.role().pipe( map((val)=>{
-    if(val == "admin") return true;
-    else{
-      router.navigate(['/accueil'])
-      alert("Vous n'avez pas les droits pour accéder à cette page")
+  return loginService.role().pipe(map((val) => {
+    if (val == "admin") return true;
+    else {
+      router.navigate(['/home'])
+      alert("You can't access this page")
       return false
     }
   }),
-  catchError((error)=>{
-    console.log(error);    
-    router.navigate(['/accueil'])
-    return of(false);    
-  }));
+    catchError((error) => {
+      console.log(error);
+      router.navigate(['/home'])
+      return of(false);
+    }));
 
 };
