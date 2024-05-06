@@ -25,6 +25,7 @@ const auth = require('./src/auth/login')
 const sign = require('./src/auth/signup')
 const controle = require('./src/auth/controler')
 const user = require('./src/Data/user')
+const service = require('./src/Data/service')
 ////-----------------------------------------------
 
 
